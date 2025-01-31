@@ -1,28 +1,125 @@
 # Activepieces
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/activepieces`. To experiment with that code, run `bin/console` for an interactive prompt.
+Ruby interface for the Activepieces API
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
 Install the gem and add to the application's Gemfile by executing:
 
-```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
+    $ bundle add activepieces
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+Or in your Gemfile add
 
-```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
+    gem "activepieces"
 
 ## Usage
 
-TODO: Write usage instructions here
+In `config/initializers/activepieces.rb` add your API KEY and `base_url` (default: `https://cloud.activepieces.com`)
+
+```ruby
+Activepieces.configure do |config|
+  config[:api_key] = ENV["ACTIVEPIECES_API_KEY"]
+  config[:host] = "my.server.com"
+end
+```
+
+### Projects
+
+#### List all Projects
+
+```ruby
+client = Activepieces::Client.new
+projects = client.projects
+
+# OR
+
+Activepieces::Project.list
+```
+
+#### Create a new project
+
+```ruby
+Activepieces::Project.create(display_name: "My new project", external_id: "asdf") #=> <Activepieces::Project @display_name: "My New Project">
+```
+
+#### Get a project
+```ruby
+client = Activepieces::Client.new
+projects = client.projects.find(1)
+
+# or
+
+project = Activepieces::Project.find(1)
+```
+
+#### Update a project
+
+```ruby
+project = Activepieces::Project.find(1)
+project.update(display_name: "My old project")
+```
+
+### Flows
+
+#### List project flows
+```ruby
+project = Activepieces::Project.find(1)
+project.flows #=> [<Activepieces::Flow>, <Activepieces::Flow>]
+
+# or
+
+Activepieces::Flow.list(project_id: 1) #=> [<Activepieces::Flow>, <Activepieces::Flow>]
+
+# or
+client.flows.list(project_id: 1)
+```
+
+#### Get
+```ruby
+Activepieces::Flow.find("ak42jn") #=> <Activepieces::Flow>
+
+# or
+client.flows.find("ak42jn")
+```
+
+#### Create a flow
+```ruby
+Activepieces::Flow.create(project_id: 1, display_name: "My First Flow")
+
+#or 
+project.create_flow(display_name: "My First Flow")
+```
+
+#### Delete a flow
+```ruby
+Activepieces::Flow.delete("ak42jn")
+
+#or 
+flow = Activepieces::Flow.find("ak42jn")
+flow.delete
+```
+
+#### Applying a Flow Operation (Updating a flow)
+Coming soon
+
+### Flow Runs
+
+#### List Flow runs
+```ruby
+Activepieces::FlowRun.list(flow_id: "ak42jn")
+
+#or 
+flow = Activepieces::Flow.find("ak42jn")
+flow.runs #=> [<Activepieces::FlowRun>, <Activepieces::FlowRun>]
+```
+
+#### Get a Flow run
+```ruby
+Activepieces::FlowRun.find("nm12ik") #=> <Activepieces::FlowRun>
+
+# or 
+flow.runs.find("nm12ik")
+```
 
 ## Development
 
