@@ -46,4 +46,15 @@ RSpec.describe Activepieces::Client do
       end
     end
   end
+
+  describe "connection" do
+    let(:client) { Activepieces::Client.new(host: "my.host.com") }
+
+    it "memoizes the connection" do
+      expect(Faraday).to receive(:new).once.with("https://my.host.com/api/v1").and_call_original
+      connection = client.connection
+
+      expect(client.connection).to be(connection)
+    end
+  end
 end
