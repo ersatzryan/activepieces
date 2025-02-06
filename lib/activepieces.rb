@@ -6,8 +6,8 @@ require "activepieces/version"
 module Activepieces
   class Error < StandardError; end
 
-  autoload :Configuration, 'activepieces/configuration'
-  autoload :Client, 'activepieces/client'
+  autoload :Configuration, "activepieces/configuration"
+  autoload :Client, "activepieces/client"
 
   def self.configuration=(config)
     @configuration = config
