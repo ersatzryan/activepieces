@@ -11,6 +11,10 @@ module Activepieces
       @stubs = stubs
     end
 
+    def flow_runs
+      FlowRunsResource.new(self)
+    end
+
     def connection
       @connection ||= build_connection
     end
