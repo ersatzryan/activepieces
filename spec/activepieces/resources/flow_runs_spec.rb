@@ -15,4 +15,14 @@ RSpec.describe Activepieces::FlowRunsResource do
       expect(item.flowDisplayName).to eq("My Test Flow")
     end
   end
+
+  describe "#find" do
+    it "returns a flow run" do
+      stub = stub_request("flow-runs/1", response: stub_response(fixture: "flow_runs/get"))
+      client = Activepieces::Client.new(stubs: stub)
+      flow_run = client.flow_runs.find(1)
+      expect(flow_run).to be_a(Activepieces::FlowRun)
+      expect(flow_run.flowDisplayName).to eq("My Test Flow")
+    end
+  end
 end

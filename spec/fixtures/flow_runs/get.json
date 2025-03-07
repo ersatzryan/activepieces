@@ -1,0 +1,20 @@
+{
+  "id": "bb647577-082c-42f2-9ef0-182f2e5e3591",
+  "created": "2025-03-04T23:33:42Z",
+  "updated": "2025-03-04T23:33:42Z",
+  "projectId": "aea999cf-a3b0-49da-8daf-8fad6b6b4c89",
+  "flowId": "0bc45406-1498-4261-9099-8e3caa06452a",
+  "tags": [
+    "my-tag"
+  ],
+  "flowVersionId": "965c2359-4550-402c-92ed-7effea36a669",
+  "flowDisplayName": "My Test Flow",
+  "logsFileId": "f2c33c41-7c79-4667-8e1b-a2a8e3965d8a",
+  "tasks": 123,
+  "status": "FAILED",
+  "duration": 123,
+  "startTime": "2025-03-05T00:00:00Z",
+  "finishTime": "2025-03-05T00:02:03Z",
+  "environment": "PRODUCTION",
+  "steps": {}
+}
