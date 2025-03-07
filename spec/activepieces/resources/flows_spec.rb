@@ -14,6 +14,20 @@ RSpec.describe Activepieces::FlowsResource do
       expect(item).to be_a(Activepieces::Flow)
       expect(item.displayName).to eq("My Awesome Flow")
     end
+
+    it "requires a project_id" do
+      client = Activepieces::Client.new
+      expect { client.flows.list }.to raise_error(ArgumentError, "missing required parameter :project_id")
+    end
+
+    it "handles empty responses" do
+      stub = stub_request("flows", response: stub_response(fixture: "flows/empty_list"))
+      client = Activepieces::Client.new(stubs: stub)
+      flows = client.flows.list(project_id: 1)
+
+      expect(flows).to be_a(Activepieces::Collection)
+      expect(flows.count).to eq(0)
+    end
   end
 
   describe "#find" do

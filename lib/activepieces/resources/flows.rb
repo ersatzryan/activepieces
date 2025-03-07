@@ -1,6 +1,8 @@
 module Activepieces
   class FlowsResource < Resource
     def list(**params)
+      raise ArgumentError, "missing required parameter :project_id" unless params[:project_id]
+
       response = get("flows", params)
       Collection.from_response(response, type: Flow)
     end
