@@ -20,6 +20,14 @@ RSpec.describe Activepieces::FlowRunsResource do
 
       expect { client.flow_runs.list }.to raise_error(ArgumentError, "missing required parameter :project_id")
     end
+
+    it "handles empty responses" do
+      stub = stub_request("flow-runs", response: stub_response(fixture: "flow_runs/empty_list"))
+      client = Activepieces::Client.new(stubs: stub)
+      flow_runs = client.flow_runs.list(project_id: 1)
+      expect(flow_runs).to be_a(Activepieces::Collection)
+      expect(flow_runs.count).to eq(0)
+    end
   end
 
   describe "#find" do
