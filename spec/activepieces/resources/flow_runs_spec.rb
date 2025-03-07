@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe Activepieces::FlowRunsResource do
   describe "#list" do
     it "returns a list of flow runs" do
-      stub = stub_request("flow_runs", response: stub_response(fixture: "flow_runs/list"))
+      stub = stub_request("flow-runs", response: stub_response(fixture: "flow_runs/list"))
       client = Activepieces::Client.new(stubs: stub)
       flow_runs = client.flow_runs.list
 
