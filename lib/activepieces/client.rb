@@ -11,6 +11,10 @@ module Activepieces
       @stubs = stubs
     end
 
+    def flows
+      FlowsResource.new(self)
+    end
+
     def flow_runs
       FlowRunsResource.new(self)
     end

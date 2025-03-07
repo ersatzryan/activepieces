@@ -11,7 +11,10 @@ module Activepieces
   autoload :Configuration, "activepieces/configuration"
   autoload :Resource, "activepieces/resource"
 
+  autoload :FlowsResource, "activepieces/resources/flows"
   autoload :FlowRunsResource, "activepieces/resources/flow_runs"
+
+  autoload :Flow, "activepieces/objects/flow"
   autoload :FlowRun, "activepieces/objects/flow_run"
 
   def self.configuration=(config)

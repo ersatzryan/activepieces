@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "id": "1234567",
+      "created": "2025-01-01:00:00:00Z",
+      "updated": "2025-01-01:00:00:00Z",
+      "projectId": "1234567",
+      "externalId": "1234567",
+      "folderId": "1234567",
+      "status": "ENABLED",
+      "schedule": {
+        "type": "CRON_EXPRESSION",
+        "cronExpression": "<string>",
+        "timezone": "<string>",
+        "failureCount": 123
+      },
+      "publishedVersionId": "1234567",
+      "version": {
+        "id": "1234567",
+        "created": "2025-01-01:00:00:00Z",
+        "updated": "2025-01-01:00:00:00Z",
+        "flowId": "1234567",
+        "displayName": "My Awesome Flow",
+        "trigger": {
+          "name": "<string>",
+          "valid": true,
+          "displayName": "<string>",
+          "nextAction": "<any>",
+          "type": "PIECE_TRIGGER",
+          "settings": {
+            "pieceName": "<string>",
+            "pieceVersion": "<string>",
+            "pieceType": "CUSTOM",
+            "packageType": "ARCHIVE",
+            "triggerName": "<string>",
+            "input": {},
+            "inputUiInfo": {
+              "sampleDataFileId": "1234567",
+              "lastTestDate": "<string>",
+              "customizedInputs": {},
+              "currentSelectedData": "<any>"
+            }
+          }
+        },
+        "updatedBy": "<string>",
+        "valid": true,
+        "schemaVersion": "<string>",
+        "state": "LOCKED"
+      }
+    }
+  ],
+  "next": "<string>",
+  "previous": "<string>"
+}
