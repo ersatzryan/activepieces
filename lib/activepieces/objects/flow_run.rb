@@ -1,7 +1,6 @@
+require "ostruct"
+
 module Activepieces
-  class FlowRun
-    def initialize(attributes = {})
-      @attributes = attributes
-    end
+  class FlowRun < OpenStruct
   end
 end

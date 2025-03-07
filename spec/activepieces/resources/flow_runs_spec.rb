@@ -8,8 +8,11 @@ RSpec.describe Activepieces::FlowRunsResource do
       flow_runs = client.flow_runs.list
 
       expect(flow_runs).to be_a(Activepieces::Collection)
-      expect(flow_runs.items.first).to be_a(Activepieces::FlowRun)
       expect(flow_runs.count).to eq(1)
+
+      item = flow_runs.items.first
+      expect(item).to be_a(Activepieces::FlowRun)
+      expect(item.flowDisplayName).to eq("My Test Flow")
     end
   end
 end

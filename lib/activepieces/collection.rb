@@ -8,7 +8,7 @@ module Activepieces
     end
 
     def self.from_response(response, type:)
-      new(response.body["data"].map { |attrs| type.new(attrs) })
+      new(response.body["data"].map { |attrs| type.new(**attrs) })
     end
 
     def each(&block)
